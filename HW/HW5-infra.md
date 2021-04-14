@@ -1,37 +1,28 @@
+# **CSC 519 DevOps -- Homework 5**
 # HW #5 Redis
+```
+J Troy Hunt
+jthunt@ncsu.edu 
+April 13, 2021
+```
 
-Understanding the basic building blocks that form complex infrastructure is important for operating web-scale applications.
 
-You have been assigned a GitHub repository `HW5-<unityid>`.
-
-### Completing redis workshop (80)
-
-In our [redis workshop](https://github.com/CSC-DevOps/Caches), we worked with server-side web technologies combined with redis to demonstrate concepts related to caches and queues.
-
-Your assignment is to complete the workshop with the following additional considerations:
-
-* Complete Tasks 1--5.
-* Create a screencast.
-* Answer conceptual questions related to lecture.
-
-### Conceptual Questions (20)
+### Conceptual Questions
 
 1. Describe three desirable properties for infrastructure.
+ - Scalability --> The ability to increase specific units/instances in response to changing demand.
+ - Durability --> Ensure that operations and data remain persistent across partitions.
+ - Isolation --> Reduce impact of component behavior on other operations.
+
 2. Describe some benefits and issues related to using Load Balancers.
+ - Load balancers are beneficial in that they can regulate the resources going to and from specific instances/ environments.
+ - However, in the unlikely event that a Load balancer goes down, a backup will have to be able to take its place, or data loss can occur.
+
 3. What are some reasons for keeping servers in seperate availability zones?
+ - Separate availability zones can be useful for a few reasons.
+ - 1.	Having separate availability zones ensures that in the event of a cascading error only the instances in the nearby zones are affected. 
+ - 2.	This can also be useful to ensure that if a hazardous event (Power Outage, Natural Disaster, etc.) is to occur, functionality can still be restored using instances from different zones.
+
 4. Describe the Circuit Breaker and Bulkhead pattern.
-
-##### Evaluation
-
-- Complete task 1 30%
-- Complete task 2 40%
-- Complete task 3 50%
-- Complete task 4: 70%
-- Answer conceptual questions 90%
-- Complete task 5: 100%
-
-### Submission
-
-Please commit your code by the deadline, including a README.md describing what you implemented, and includes a link to a screencast.
-
-The assignment is due Monday, April 12th before midnight.
+ - Bulkheads isolate components and protect from cascading failures through the enforcement of limits. Named after the bulkheads on a ship to prevent hulls from flooding. Essentially a seal is made to ensure that an error does not cascade into later parts on a instance.
+ - Circuit Breaker is a way of recognizing repeated failures in order to bypass the timeouts experienced during errors. For example, if an error is alloted 30 seconds to break, and the current status of a structure insures that it is breaking each time, then a Circuit Breaker will bypass this process to ensure the timeout does not occur.
